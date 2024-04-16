@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             Debug.Log("I am not grounded");
         }
 
-        if (Input.GetKeyDown("space") && isGrounded == true)
+        if (Input.GetKeyDown("w") && isGrounded == true)
         {
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
