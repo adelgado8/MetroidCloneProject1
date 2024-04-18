@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     public float speed = 10f;
 
@@ -10,9 +10,14 @@ public class Player : MonoBehaviour
     public int jumpForce = 6;
     public bool isGrounded;
     public int health = 99;
+    private bool facingLeft;
 
     private Vector3 startPosition;
     internal static object position;
+
+    public GameObject laserPrefab;
+    public float spawnRate = 2f;
+    public bool shootLeft;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,14 +32,35 @@ public class Player : MonoBehaviour
         if (Input.GetKey("a"))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
+            if(!facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = true;
+            }
         }
 
         if (Input.GetKey("d"))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+            if (facingLeft)
+            {
+                transform.Rotate(0, 180, 0);
+                facingLeft = false;
+            }
+        }
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            Shoot();
         }
 
         spaceJump();
+    }
+
+    private void Shoot()
+    {
+        GameObject newLaser = Instantiate(laserPrefab, transform.position, transform.rotation, null);
+        newLaser.GetComponent<Laser>().goingLeft = shootLeft;
     }
 
     private void OnTriggerEnter(Collider other)

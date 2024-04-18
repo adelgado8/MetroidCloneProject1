@@ -5,14 +5,16 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class HardEnemy : MonoBehaviour
 {
-    public int speed = 4;
+    public int speed = 3;
     public bool goingLeft;
     public int health = 10;
+
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerControl>().gameObject;
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class HardEnemy : MonoBehaviour
 
     private void Move()
     {
-        if (transform.position.x > Player.transform.position.x)
+        if (transform.position.x > player.transform.position.x)
         {
             transform.position += Vector3.left * Time.deltaTime * speed;
         }
