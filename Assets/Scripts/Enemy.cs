@@ -8,8 +8,9 @@ public class Enemy : MonoBehaviour
     public GameObject rightPoint;
     private Vector3 leftPos;
     private Vector3 rightPos;
-    public int speed;
+    public int speed = 3;
     public bool goingLeft;
+    public int health = 1;
 
     // Start is called before the first frame update
     void Start()

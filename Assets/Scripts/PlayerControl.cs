@@ -9,10 +9,15 @@ public class Player : MonoBehaviour
     private Rigidbody rigidBody;
     public int jumpForce = 6;
     public bool isGrounded;
+    public int health = 99;
+
+    private Vector3 startPosition;
+    internal static object position;
 
     // Start is called before the first frame update
     private void Start()
     {
+        startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -30,6 +35,19 @@ public class Player : MonoBehaviour
         }
 
         spaceJump();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            health = (health - 15);
+        }
+
+        if (other.gameObject.tag == "Hard Enemy")
+        {
+            health = (health - 35);
+        }
     }
 
     public void spaceJump()
@@ -50,5 +68,33 @@ public class Player : MonoBehaviour
         {
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    public void Health()
+    {
+
+    }
+
+    public IEnumerable Blink()
+    {
+        for (int index = 0; index < 30;  index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void Respawn()
+    {
+        GetComponent<Transform>().position = startPosition;
+        StartCoroutine((string)Blink());
     }
 }
