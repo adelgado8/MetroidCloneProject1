@@ -1,3 +1,8 @@
+/*
+ * Villalobos, Cameron
+ * 4/18/24
+ * This script keeps track of various variables related to the basic enemy, including speed, health, and damage.
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +24,7 @@ public class Enemy : MonoBehaviour
         rightPos = rightPoint.transform.position;
     }
 
+    //When the enemy reaches one of the left or right positions, it turns around and moves until it reaches the other one.
     private void Move()
     {
         if (goingLeft)
@@ -42,6 +48,15 @@ public class Enemy : MonoBehaviour
             {
                 transform.position += Vector3.right * Time.deltaTime * speed;
             }
+        }
+    }
+
+    //If the enemy runs out of health, it is destroyed.
+    public void Damage()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

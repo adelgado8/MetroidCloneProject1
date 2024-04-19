@@ -151,3 +151,7 @@ MonoBehaviour:
   speed: 10
   jumpForce: 7
   isGrounded: 0
+  health: 99
+  laserPrefab: {fileID: 577724966084939152, guid: bb4445339e3eb6e4186ffb5b5279f1d4, type: 3}
+  spawnRate: 2
+  shootLeft: 0

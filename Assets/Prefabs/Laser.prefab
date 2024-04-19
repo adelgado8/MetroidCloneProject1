@@ -100,7 +100,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,7 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d807d6cf963596c4d9516c3a36850e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
   goingLeft: 0
   despawnTime: 5
   stunTime: 2
+  damage: 1
+  bulletsUp: 0
+  enemyHP: {fileID: 0}
+  hardEnemyHP: {fileID: 0}

@@ -1,3 +1,8 @@
+/*
+ * Villalobos, Cameron
+ * 4/18/24
+ * This script keeps track of various variables related to the hard enemy, including speed, health, and damage.
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +28,16 @@ public class HardEnemy : MonoBehaviour
         Move();
     }
 
+    //If the enemy runs out of health, it is destroyed.
+    public void Damage()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    //If the player is to the right of the enemy, it moves to the right. If not, the enemy moves left, effectively following the player based on its position related to the enemy.
     private void Move()
     {
         if (transform.position.x > player.transform.position.x)

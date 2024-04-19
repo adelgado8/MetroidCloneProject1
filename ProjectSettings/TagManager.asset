@@ -7,6 +7,10 @@ TagManager:
   - Reg Enemy
   - Hard Enemy
   - Laser
+  - ExtraHealth
+  - Health
+  - Jump
+  - Heavy
   layers:
   - Default
   - TransparentFX
