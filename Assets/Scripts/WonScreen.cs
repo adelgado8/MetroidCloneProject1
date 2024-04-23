@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* Delgado, Angela
+ * 4/21/2014
+ * This Script helps transion to the Win Game Screen after player wins the game
+ */
 public class WonScreen : MonoBehaviour
 {
     /// <summary>

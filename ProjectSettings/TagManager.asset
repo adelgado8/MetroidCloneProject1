@@ -12,6 +12,8 @@ TagManager:
   - Jump
   - Heavy
   - Portal
+  - Portal two
+  - Portal three
   layers:
   - Default
   - TransparentFX

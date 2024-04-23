@@ -145,6 +145,16 @@ public class PlayerControl : MonoBehaviour
             //bring the player back to the start position
             transform.position = startPosition;
         }
+        if (other.gameObject.tag =="Portal two")
+        {
+            startPosition = other.gameObject.GetComponent<Portaltwo>().spawnPointtwo.transform.position;
+            transform.position = startPosition;
+        }
+        if (other.gameObject.tag =="Portal three")
+        {
+            startPosition = other.gameObject.GetComponent<Portalthree>().spawnPointthree.transform.position;
+            transform.position = startPosition;
+        }
     }
 
     //Check whether there is ground below the player before allowing them to jump.

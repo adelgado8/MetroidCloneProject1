@@ -6,8 +6,10 @@ using UnityEngine;
  * 4/21/2014
  * This Script helps transport character from portal three to spawnpointthree
  */
-public class Portal : MonoBehaviour
+public class Portalthree : MonoBehaviour
 {
     //game object to determine where the player spawns
-    public GameObject spawnPoint;
+    public GameObject spawnPointthree;
+
+   
 }

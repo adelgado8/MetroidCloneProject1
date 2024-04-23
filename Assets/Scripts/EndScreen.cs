@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/* Delgado, Angela
+ * 4/21/2014
+ * This Script helps transport to game over screen when charcter looses all health
+ */
 public class EndScreen : MonoBehaviour
 {
     
