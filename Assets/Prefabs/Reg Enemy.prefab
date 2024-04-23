@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a88aa77b1773f44086e148d60697436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControl: {fileID: 0}
   leftPoint: {fileID: 0}
   rightPoint: {fileID: 0}
   speed: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a88aa77b1773f44086e148d60697436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControl: {fileID: 0}
   leftPoint: {fileID: 2485862174107465031}
   rightPoint: {fileID: 4851554550663647560}
   speed: 3

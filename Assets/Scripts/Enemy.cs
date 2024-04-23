@@ -6,9 +6,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public PlayerControl PlayerControl;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Laser")
+        {
+            health = (health - 1);
+            EnemyLoseLife();
+        }
+    }
+
+
     public GameObject leftPoint;
     public GameObject rightPoint;
     private Vector3 leftPos;
@@ -52,6 +65,7 @@ public class Enemy : MonoBehaviour
     }
 
     //If the enemy runs out of health, it is destroyed.
+   
     public void Damage()
     {
         if (health <= 0)
@@ -59,10 +73,24 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+  
     // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    public void EnemyLoseLife()
+    {
+        GetComponent<Transform>().position = Vector3.zero;
+
+        if (health == 0)
+        {
+        
+            health = 0;
+            SceneManager.LoadScene(2);
+        }
+
+
     }
 }

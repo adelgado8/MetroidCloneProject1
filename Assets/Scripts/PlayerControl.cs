@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerControl : MonoBehaviour
     public int health = 99;
     public bool healthUp = false;
     private bool facingLeft;
+
+    public float Enemy = 0f;
 
     //This is where the player respawns to.
     private Vector3 startPosition;
@@ -62,13 +65,22 @@ public class PlayerControl : MonoBehaviour
         {
             Shoot();
         }
-
+        /*
         //If the player loses all of their health, respawn.
         if (health <= 0)
         {
+            
             Respawn();
+           
         }
-
+        */
+        //If the player loses all of their health.
+        if (health <= 0)
+        {
+            LoseLife();
+        }
+        //If player kills all Enemies, the player will win.
+        
         //Check for player's maximum health and the variables associated with allowing the player to jump.
         HealthCheck();
         spaceJump();
@@ -122,6 +134,16 @@ public class PlayerControl : MonoBehaviour
         {
             //bulletDMG.damage = 3; < This code crashes the game.
             Destroy(other.gameObject);
+        }
+
+        //If we collide with portal trigger, teleport the player to the next area
+        //and reset the start position
+        if (other.gameObject.tag == "Portal")
+        {
+            //reset the startPos to the spawnPoint position
+            startPosition = other.gameObject.GetComponent<Portal>().spawnPoint.transform.position;
+            //bring the player back to the start position
+            transform.position = startPosition;
         }
     }
 
@@ -180,7 +202,7 @@ public class PlayerControl : MonoBehaviour
         }
         GetComponent<MeshRenderer>().enabled = true;
     }
-
+    
     //The player respawns with full health at the start position.
     public void Respawn()
     {
@@ -194,4 +216,24 @@ public class PlayerControl : MonoBehaviour
             health = 199;
         }
     }
+    
+    public void LoseLife()
+    {
+        GetComponent<Transform>().position = Vector3.zero;
+        
+        if (healthUp == false)
+        {
+            health = 0;
+        }
+        else
+        {
+            health = 0;
+            SceneManager.LoadScene(1);
+        }
+
+
+    }
+
+   
+
 }

@@ -45,11 +45,13 @@ public class Laser : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Destroy(other.gameObject);
             enemyHP.health = --(damage);
         }
 
         if (other.gameObject.tag == "Hard Enemy")
         {
+            Destroy(other.gameObject);
             hardEnemyHP.health = --(damage);
         }
     }
